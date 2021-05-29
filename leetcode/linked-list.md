@@ -10,6 +10,7 @@
 + [Reorder List](#reorder-list)
 + [Intersection of Two Linked Lists](#intersection-of-two-linked-lists)
 + [Sort List](#sort-list)
++ [Merge k Sorted Lists](#merge-k-sorted-lists)
 
 ## Reverse Linked List
 
@@ -275,6 +276,33 @@ def sortList(self, head: ListNode) -> ListNode:
         tail.next = mergedHead
         tail = mergedTail
       k *= 2
+
+    return dummy.next
+```
+
+## Merge k Sorted Lists
+
+<https://leetcode.com/problems/merge-k-sorted-lists/>
+
+```python
+from queue import PriorityQueue
+
+class Solution:
+  def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    dummy = ListNode(0)
+    curr = dummy
+    pq = PriorityQueue()
+
+    for i, lst in enumerate(lists):
+      if lst:
+        pq.put((lst.val, i, lst))
+
+    while not pq.empty():
+      _, i, minNode = pq.get()
+      if minNode.next:
+        pq.put((minNode.next.val, i, minNode.next))
+      curr.next = minNode
+      curr = curr.next
 
     return dummy.next
 ```
