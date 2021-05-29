@@ -32,7 +32,7 @@ def check_prefixes(message):
     pref = pref[0]
     if group in GROUPS:
         if pref in PREFIXES:
-            return 'OKK'
+            return 'OK'
         else:
             return 'WRONG PREFIX'
     else:
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     date = ['0','0','0','0','0','0']
     repo_name = 'python_au'
     pr_state = 'open'
-    all_prs = get_all_user_prs('vasis3038', repo_name, pr_state)
+    all_prs = get_all_user_prs('sanchousss', repo_name, pr_state)
     lst = [all_prs[0], all_prs[1], all_prs[2]]
     find_date(lst)
     for acc in ACCOUNTS:
